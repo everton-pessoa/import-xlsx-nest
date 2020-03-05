@@ -1,13 +1,22 @@
 import { Controller, Post, UseInterceptors, UploadedFile, Body } from '@nestjs/common';
 
+//https://docs.nestjs.com/techniques/file-upload
+//https://github.com/expressjs/multer
 import {FileInterceptor} from '@nestjs/platform-express'
+
+
 import {Dto} from './dto'
 
+
+//https://docs.nestjs.com/techniques/validation
+//https://github.com/typestack/class-validator
 import {validate, validateSync} from 'class-validator'
 
+//https://nodejs.org/api/fs.html
 import fs = require('fs');
 
-
+//https://github.com/SheetJS/sheetjs
+//https://github.com/SheetJS/sheetjs/tree/master/demos/typescript
 import * as XLSX from 'xlsx'
 
 @Controller('import')
@@ -54,14 +63,10 @@ export class ImportController {
       i.msgOcurrence = Object.values(ocurrence[0].constraints).join();
 
     }
-
   }
   return req;
 
 }
-
-
-
 
 @Post('add')
 create(@Body() createUserDto: Dto) {
